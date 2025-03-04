@@ -1,0 +1,33 @@
+# globalVariables:
+#   LIQUIBASE_COMMAND_CHANGELOG_FILE: src/main/resources/db/changlelog/db.changelog-master.xml
+
+stages:
+
+  # Status:
+  #   actions:
+
+    # - type: liquibase
+    #   command: status
+
+    # - type: control
+    #   if: "status.changesetCount == 0"
+    #   command: exit
+    #   cmdArgs: {
+    #     exitStatus: 0,
+    #     message: "Exiting because the database is up-to-date."
+    #   }
+  
+  Checks:
+    actions:
+    - type: liquibase
+      command: checks run
+      cmdArgs: { 
+        # changeset-filter: "pending",
+        checks-settings-file: "automation/liquibase.checks-settings.conf"
+      }
+
+
+# endStage:
+#   actions:
+#   - type: liquibase
+#     command: history
