@@ -38,8 +38,9 @@ pipeline {
 					extensions: [], 
 					userRemoteConfigs: [[url: '${GIT_REPO}']]
 				)
+
 				checkout scmGit(
-					branches: [[name: '*/master']], 
+					branches: [[name: '*/main']], 
 					extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'dsa']], 
 					userRemoteConfigs: [[credentialsId: 'amalik-bitbucket', 
 					url: 'http://amalik@ca.liquibase.net:7990/scm/ccb/dsa_spring_demo.git']]
