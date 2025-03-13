@@ -40,7 +40,7 @@ pipeline {
 				)
 
 				checkout scmGit(
-					branches: [[name: '*/main']], 
+					branches: [[name: '*/master']], 
 					extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'dsa']], 
 					userRemoteConfigs: [[credentialsId: 'amalik-bitbucket', 
 					url: 'http://amalik@ca.liquibase.net:7990/scm/ccb/dsa_spring_demo.git']]
@@ -69,6 +69,7 @@ pipeline {
 					liquibase flow --flow-file=ddl.flowfile.yaml
 
 					# Run Liquibase flow file
+					cd ..
  					liquibase flow --flow-file=automation/checks.flowfile.yaml
 				'''  
 				
